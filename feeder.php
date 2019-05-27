@@ -10,7 +10,10 @@ if($_SESSION['total_round_completed'] > $totalRoundCount) {
     //Logic to check if round completed & player won or lost based on condition
     if(isset($_SESSION['dead_farmer_count']) || $_SESSION['dead_cows_count'] || $_SESSION['dead_bunnies_count']) {
         if($_SESSION['dead_farmer_count'] >= 1 || $_SESSION['dead_cows_count'] >= 1 || $_SESSION['dead_bunnies_count'] >= 1){
-            $html = "You Won!~1";
+            if(isset($_SESSION['entities'])) {
+                $aliveEntites = implode(", ", $_SESSION['entities'])." Survived";
+                $html = $aliveEntites."! You Won!~1";
+            }
         }
     }
     else{
