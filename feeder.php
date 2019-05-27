@@ -5,7 +5,14 @@ $_SESSION['total_round_completed']++;
 $html = "";
 
 if($_SESSION['total_round_completed'] > $totalRoundCount) {
-    $html = '1';
+    if(isset($_SESSION['dead_farmer_count']) || $_SESSION['dead_cows_count'] || $_SESSION['dead_bunnies_count']) {
+        if($_SESSION['dead_farmer_count'] >= 1 || $_SESSION['dead_cows_count'] >= 1 || $_SESSION['dead_bunnies_count'] >= 1){
+            $html = "You Won!~1";
+        }
+    }
+    else{
+        $html = "All round are finished! Start Again!~1";
+    }
 }
 else {
     $generateRandomKeyFromEntity = array_rand($_SESSION['entities'], 1);
@@ -42,6 +49,8 @@ echo $html;
 
 function validateIfFeedOrDead($randomKeyGeneratedFromEntity) {
     $output = "";
+
+    global $totalRoundCount;
 
     global $farmerFeedAfterTurn;
 

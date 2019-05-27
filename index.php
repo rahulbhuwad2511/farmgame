@@ -25,7 +25,6 @@
                         if(response[1] == "1" || response[1] == "4") {
                             jQuery("#startFeeding").attr("disabled", true);
                             jQuery('#message').html(response[0]);
-                            jQuery('#cell0_'+response[1]).css("color", "red");
                         }
                         if(response.indexOf("~") == -1) {
                             jQuery("#cell"+response).html("FEED");
