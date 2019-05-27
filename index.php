@@ -21,10 +21,6 @@
                     url: 'feeder.php',
                     type: 'POST',
                     success: function(response){
-                        if(response == 1) {
-                            jQuery("#startFeeding").attr("disabled", true);
-                            jQuery('#message').html("You Have Completed All Your Rounds! Click on Start New Game");
-                        }
                         response = response.split("~");
                         if(response[1] == "1" || response[1] == "4") {
                             jQuery("#startFeeding").attr("disabled", true);

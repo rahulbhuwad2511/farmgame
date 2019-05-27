@@ -44,7 +44,6 @@ function validateIfFeedOrDead($randomKeyGeneratedFromEntity) {
     $output = "";
 
     global $farmerFeedAfterTurn;
-    $diedFarmer = 0;
 
     global $cowFeedAfterTurn;
 
@@ -53,9 +52,8 @@ function validateIfFeedOrDead($randomKeyGeneratedFromEntity) {
     $output = $_SESSION['total_round_completed']."_".$randomKeyGeneratedFromEntity;
 
     if($_SESSION['feed_farmer_count'] > $farmerFeedAfterTurn) {
-        $diedFarmer = 1;
-        unset($_SESSION['entities'][$diedFarmer]);
-        unset($_SESSION['farmer'][$diedFarmer]); 
+        unset($_SESSION['entities'][1]);
+        unset($_SESSION['farmer'][1]); 
         $_SESSION['dead_farmer_count'] = 1;        
     }
 
@@ -76,8 +74,8 @@ function validateIfFeedOrDead($randomKeyGeneratedFromEntity) {
     }
 
     
-    if($diedFarmer > 0 && $_SESSION['dead_farmer_count'] == 1) {
-        $output = "Farmer is dead~$diedFarmer";
+    if($_SESSION['dead_farmer_count'] == 1) {
+        $output = "Farmer is dead~4";
     }
     if($_SESSION['dead_cows_count'] == 2) {
         $output = "All Cows are dead~4";
