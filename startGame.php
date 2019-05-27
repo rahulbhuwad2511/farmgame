@@ -1,6 +1,7 @@
 <?php
 include_once("global.php");
 session_start();
+//Set all session values to zero
 $_SESSION['total_round_completed'] = 0;
 
 $_SESSION['entities'] = $entities;
@@ -22,6 +23,7 @@ $_SESSION['dead_farmer_count'] = 0;
 $_SESSION['dead_cows_count'] = 0;
 $_SESSION['dead_bunnies_count'] = 0;
 
+//Generate table with cell id to process the feed element based on round and entity id
 $table = "<table border='1'>";
 for($i = 0; $i <= $totalRoundCount; $i++) {
     $table .= "<tr>";
